@@ -3,9 +3,21 @@
 margin: 0;
 padding: 0;
 }
+html{
+  width: 100%;
+  background-image: url(../image/fon.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
 body {
   max-width: 1200px;
   margin: 0 auto;
+}
+header {
+  padding: 5px;
+  background-color: rgba(136, 156, 156, 0.354);
+  text-align: center;
+  color: rgba(201, 203, 203, 0.768);
 }
 .container{
   width: 800px;
@@ -13,9 +25,10 @@ body {
   margin: 10px auto;
 }
 .border_keys{
-  padding: 6px;
+  padding: 6px 6px 6px 10px;
   border: 1px solid #ebafaf;
   border-radius: 8px;
+  background-color: rgba(227, 218, 207, 0.864);
 }
 .blocks {
   display: flex;
@@ -35,12 +48,12 @@ body {
   border-radius: 3px;
 }
 .painting {
-  background-color: chartreuse;
+  background-color: rgba(159, 247, 97, 0.643);
 }
 .visual{
   height: 120px;
   background-color: darkgray;
-  margin: 30px 0px;
+  margin: 150px 0px 70px 0px;
   padding-left: 15px;
 }
 .test_text {
