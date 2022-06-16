@@ -7,6 +7,7 @@ textOut = document.querySelector('.out_text')
 
 let baseKey = Array.from(allBtn), //! кнопки на виртуалке
 spN = '',
+flagTime = false,
 str =[]
 
 
@@ -18,11 +19,24 @@ function printOutRandom(){
 let temp = getRndInteger(0, 55)
 textIn.innerText = basEngl[temp]
 str = textIn.innerText.split('') //? массив из строки
+}
 
+function settingsTime() {
+  if(str.length != 0){
+    flagTime = true
+    const start = new Date().getTime()
+  } else {
+    flagTime = false
+    const endTime = new Date().getTime()
+    console.log('SecondWay: ${endTime - start}ms')
+  }
 }
 
 
 function key_D(e){
+  if(flagTime == false){
+    settingsTime()
+  }
   baseKey.forEach(elem => {
     if(elem.id == e.keyCode){
       elem.classList.add('activeKey')
@@ -38,6 +52,7 @@ function key_D(e){
 }
 
 function  up_key(e){
+
   if(e.key == 'Enter' && str.length == 0){
     textOut.innerText = ''
     textIn.innerText = ''
@@ -55,6 +70,7 @@ function  up_key(e){
 }
 
 printOutRandom()
+
 addEventListener('keyup', up_key);
 
 addEventListener('keydown', key_D);
