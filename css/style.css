@@ -56,6 +56,24 @@ header {
   margin: 80px 0px 40px 0px;
   padding-left: 15px;
 }
+.block_info {
+  display: flex;
+}
+.metka {
+  justify-content: end;
+}
+.stroka {
+  justify-content: start;
+}
+.metka, .stroka {
+  width: 50%;
+  display: flex;
+}
+.info {
+  padding: 0 8px;
+  font-size: 1.8em;
+  color: azure;
+}
 .test_text {
   padding: 10px 10px;
   font-size: 2.2em;

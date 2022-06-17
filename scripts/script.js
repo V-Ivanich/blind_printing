@@ -8,7 +8,9 @@ textOut = document.querySelector('.out_text')
 let baseKey = Array.from(allBtn), //! кнопки на виртуалке
 spN = '',
 flagTime = false,
-str =[]
+str =[],
+star,
+endTime
 
 
 function getRndInteger(min, max) {
@@ -22,21 +24,21 @@ str = textIn.innerText.split('') //? массив из строки
 }
 
 function settingsTime() {
-  if(str.length != 0){
+  if(str.length == 50){
     flagTime = true
-    const start = new Date().getTime()
-  } else {
+    star = new Date().getTime()
+  }
+  if(str.length == 1) {
     flagTime = false
-    const endTime = new Date().getTime()
-    console.log('SecondWay: ${endTime - start}ms')
+    endTime = new Date().getTime()
+    document.querySelector('.result').innerHTML = ' ' + (endTime - star)/1000 + 'sec.'
   }
 }
 
 
 function key_D(e){
-  if(flagTime == false){
     settingsTime()
-  }
+
   baseKey.forEach(elem => {
     if(elem.id == e.keyCode){
       elem.classList.add('activeKey')
