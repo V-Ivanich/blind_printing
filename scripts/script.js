@@ -7,7 +7,6 @@ textOut = document.querySelector('.out_text')
 
 let baseKey = Array.from(allBtn), //! кнопки на виртуалке
 spN = '',
-flagTime = false,
 str =[],
 star,
 endTime
@@ -25,11 +24,9 @@ str = textIn.innerText.split('') //? массив из строки
 
 function settingsTime() {
   if(str.length == 50){
-    flagTime = true
     star = new Date().getTime()
   }
   if(str.length == 1) {
-    flagTime = false
     endTime = new Date().getTime()
     document.querySelector('.result').innerHTML = ' ' + (endTime - star)/1000 + 'sec.'
   }
