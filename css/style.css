@@ -3,6 +3,9 @@
 margin: 0;
 padding: 0;
 }
+ol, ul {
+  list-style: none;
+}
 html{
   width: 100%;
   background-image: url(../image/fon.jpg);
@@ -17,7 +20,20 @@ header {
   padding: 5px;
   background-color: rgba(136, 156, 156, 0.354);
   text-align: center;
-  color: rgba(201, 203, 203, 0.768);
+  color: rgb(221, 240, 240);
+}
+header ul li {
+  cursor: pointer;
+  margin: 0px 100px 0px 20px;
+  font-size: 1.2em;
+  transition: 0.5s ease;
+}
+header ul li:hover {
+  opacity: 0.5;
+}
+header ul {
+  display:flex;
+  justify-content: end;
 }
 .container{
   width: 800px;
@@ -71,7 +87,7 @@ header {
 }
 .info {
   padding: 0 8px;
-  font-size: 1.8em;
+  font-size: 1.2em;
   color: azure;
 }
 .test_text {
