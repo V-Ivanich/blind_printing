@@ -12,30 +12,29 @@ html{
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
-body {
+body, .container {
   max-width: 1200px;
   margin: 0 auto;
 }
-header {
-  padding: 5px;
-  background-color: rgba(136, 156, 156, 0.354);
-  text-align: center;
-  color: rgb(221, 240, 240);
+header{
+  display: flex;
+  background: var(--bs-gray-dark);
 }
-header ul li {
-  cursor: pointer;
-  margin: 0px 100px 0px 20px;
-  font-size: 1.2em;
-  transition: 0.5s ease;
+.navbar {
+  background: var(--bs-gray-dark);
 }
-header ul li:hover {
-  opacity: 0.5;
+.logotips {
+  width: 70%;
 }
-header ul {
-  display:flex;
-  justify-content: end;
+.alert {
+  position: absolute;
+  top: 50px;
+  left: 70%;
 }
-.container{
+.no_activeAlert{
+  visibility: hidden;
+}
+.contain{
   width: 800px;
   padding: 5px 0px;
   margin: 10px auto;
@@ -69,7 +68,7 @@ header ul {
 .visual{
   height: 180px;
   background-color: darkgray;
-  margin: 40px 0px 35px 0px;
+  margin: 15px 0px;
   padding-left: 15px;
 }
 .block_info {
@@ -81,18 +80,20 @@ header ul {
 .stroka {
   justify-content: start;
 }
-.metka, .stroka {
-  width: 50%;
+.err_or_activ {
+  background-color: coral;
+}
+.metka, .stroka, .err_or {
+  width: 33.3333%;
   display: flex;
 }
 .info {
   padding: 0 8px;
   font-size: 1.2em;
-  color: azure;
+  color: rgb(112, 155, 155);
 }
 .test_text {
-  padding: 2px;
-  font-size: 2.2em;
+  font-size: 1.6em;
   letter-spacing: 8px;
 }
 .activeKey {
