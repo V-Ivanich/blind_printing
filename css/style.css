@@ -12,9 +12,11 @@ html{
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
+
 body, .container {
   max-width: 1200px;
   margin: 0 auto;
+  background: transparent;
 }
 header{
   display: flex;
@@ -24,15 +26,27 @@ header{
   background: var(--bs-gray-dark);
 }
 .logotips {
-  width: 70%;
+  width: 65%;
+  display: flex;
 }
 .alert {
   position: absolute;
   top: 50px;
-  left: 70%;
+  left: 65%;
+  width: 395px;
+  background: #a4b8e6;
 }
 .no_activeAlert{
   visibility: hidden;
+}
+#res_btn {
+  margin: auto 50px;
+  border-radius: 50%;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  padding-bottom: 8px;
+  text-align: center;
 }
 .contain{
   width: 800px;
@@ -67,12 +81,16 @@ header{
 }
 .visual{
   height: 180px;
-  background-color: darkgray;
+  background-color: rgba(112, 161, 180, 0.808);
   margin: 15px 0px;
   padding-left: 15px;
+  border: 1px solid rgb(188, 190, 192);
+  border-radius: 8px;
+  text-align: center;
 }
 .block_info {
   display: flex;
+  background-color: rgba(147, 214, 231, 0.705);
 }
 .metka {
   justify-content: end;
@@ -88,9 +106,10 @@ header{
   display: flex;
 }
 .info {
+  margin: 0;
   padding: 0 8px;
   font-size: 1.2em;
-  color: rgb(112, 155, 155);
+  color: rgb(42, 51, 61);
 }
 .test_text {
   font-size: 1.6em;
