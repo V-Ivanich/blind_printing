@@ -23,6 +23,7 @@ spN = '',
 str =[],
 star,
 er_ror = 0,
+active_dictionary = beginWords,
 endTime
 
 
@@ -38,8 +39,8 @@ function resetAll(){
 }
 
 function printOutRandom(){
-let temp = getRndInteger(0, 55)
-textIn.innerText = basEngl[temp]
+let temp = getRndInteger(0, active_dictionary.length - 1)
+textIn.innerText = active_dictionary[temp]
 str = textIn.innerText.split('') //? массив из строки
 }
 
