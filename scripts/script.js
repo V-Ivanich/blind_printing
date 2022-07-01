@@ -23,7 +23,8 @@ spN = '',
 str =[],
 star,
 er_ror = 0,
-active_dictionary = beginWords,
+lengStr = 0,
+active_dictionary = beginWords.words,
 endTime
 
 
@@ -38,10 +39,22 @@ function resetAll(){
   er_ror = 0
 }
 
+//! функция создания и отрисовки строки
 function printOutRandom(){
-let temp = getRndInteger(0, active_dictionary.length - 1)
-textIn.innerText = active_dictionary[temp]
+let temp = getRndInteger(0, active_dictionary.length - 1)//? получение строки
+if(active_dictionary.flag == '1'){
+  textIn.innerText = active_dictionary[temp]
+} else {
+  let tempStr = active_dictionary[temp]
+  const dublicate = tempStr
+  while(tempStr.length <= 56){
+    tempStr += ' ' + dublicate
+  }
+  textIn.innerText = tempStr
+}
+
 str = textIn.innerText.split('') //? массив из строки
+lengStr = str.length
 }
 
 function show_error() {
@@ -52,7 +65,7 @@ function show_error() {
 }
 
 function settingsTime() {
-  if(str.length == 50){
+  if(str.length == lengStr){
     star = new Date().getTime()
   }
   if(str.length == 1) {

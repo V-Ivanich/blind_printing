@@ -1,5 +1,6 @@
 const begin_er = {
-  begKey: [
+  flag: '0',
+  words: [
     'words',
     'cool',
     'look',
@@ -57,4 +58,4 @@ const begin_er = {
   ]
 }
 
-export const beginWords = begin_er.begKey;
+export const beginWords = begin_er;
