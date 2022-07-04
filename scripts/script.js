@@ -24,6 +24,7 @@ str =[],
 star,
 er_ror = 0,
 lengStr = 0,
+anvanFlag = false,
 active_dictionary = beginWords.words,
 endTime
 
@@ -39,6 +40,23 @@ function resetAll(){
   er_ror = 0
 }
 
+//! кнопки выбора уровня сложности
+btn_Advan.addEventListener('click', () => {
+  active_dictionary = basEngl.words
+  anvanFlag = true
+  printOutRandom()
+})
+btn_Midd.addEventListener('click', () => {
+  active_dictionary = basEngl.words
+  anvanFlag = false
+  printOutRandom()
+})
+btn_Begin.addEventListener('click', () => {
+  active_dictionary = beginWords.words
+  anvanFlag = false
+  printOutRandom()
+})
+
 //! функция создания и отрисовки строки
 function printOutRandom(){
 let temp = getRndInteger(0, active_dictionary.length - 1)//? получение строки
@@ -47,7 +65,11 @@ if(active_dictionary.flag == '1'){
 } else {
   let tempStr = active_dictionary[temp]
   const dublicate = tempStr
-  while(tempStr.length <= 56){
+  while(tempStr.length < 56){
+    let prom = tempStr.length + dublicate.length + 1
+    if(prom > 56){
+      break
+    } else
     tempStr += ' ' + dublicate
   }
   textIn.innerText = tempStr
