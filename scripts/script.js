@@ -3,7 +3,6 @@ import { beginWords } from "../modules/beginer.js";
 
 const allBtn = document.querySelectorAll('.key_1')
 let textIn = document.querySelector('.in_text'),
-textOut = document.querySelector('.out_text'),
 btnInfo = document.querySelector('#btn_spr'),
 err_r = document.querySelector('.err_or'),
 winAlert = document.querySelector('#alert_s'),
@@ -33,7 +32,7 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-function resetAll(){
+function resetAll(){ //? перезапуск
   textOut.innerText = ''
   textIn.innerText = ''
   spN = ''
@@ -59,24 +58,23 @@ btn_Begin.addEventListener('click', () => {
 
 //! функция создания и отрисовки строки
 function printOutRandom(){
-let temp = getRndInteger(0, active_dictionary.length - 1)//? получение строки
-if(active_dictionary.flag == '1'){
-  textIn.innerText = active_dictionary[temp]
-} else {
-  let tempStr = active_dictionary[temp]
-  const dublicate = tempStr
-  while(tempStr.length < 56){
-    let prom = tempStr.length + dublicate.length + 1
-    if(prom > 56){
-      break
-    } else
-    tempStr += ' ' + dublicate
-  }
-  textIn.innerText = tempStr
-}
-
-str = textIn.innerText.split('') //? массив из строки
-lengStr = str.length
+  let temp = getRndInteger(0, active_dictionary.length - 1)//? получение строки
+  if(active_dictionary.flag == '1'){
+    textIn.innerText = active_dictionary[temp]
+    } else {
+      let tempStr = active_dictionary[temp]
+      const dublicate = tempStr
+      while(tempStr.length < 56){
+        let prom = tempStr.length + dublicate.length + 1
+        if(prom > 56){
+        break
+        } else
+          tempStr += ' ' + dublicate
+      }
+    textIn.innerText = tempStr
+    }
+  str = textIn.innerText.split('') //? массив из строки
+  lengStr = str.length
 }
 
 function show_error() {
@@ -87,11 +85,11 @@ function show_error() {
 }
 
 function settingsTime() {
-  if(str.length == lengStr){
+  if(str.length == lengStr){ //? начало отсчета таймера
     star = new Date().getTime()
   }
   if(str.length == 1) {
-    endTime = new Date().getTime()
+    endTime = new Date().getTime() //? 'конец' таймера
     let temp = parseInt(3000/((endTime - star)/1000))
     document.querySelector('.result').innerHTML = ' ' + temp + ' сим. в мин.'
     err_r.innerHTML = ' Ошибок : ' + er_ror;
@@ -122,7 +120,6 @@ function key_D(e){
     }
   })
   if(str[0] == e.key && e.key != 'Shift'){
-    textOut.innerHTML += str[0]
     spN += str[0]
     str.shift()
     textIn.innerHTML = `<span class="painting">${spN}</span>` + str.join('')

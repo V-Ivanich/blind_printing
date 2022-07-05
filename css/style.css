@@ -114,6 +114,7 @@ header{
 .test_text {
   font-size: 1.6em;
   letter-spacing: 6px;
+  margin-bottom: .25em;
   white-space: nowrap;
 }
 .activeKey {
