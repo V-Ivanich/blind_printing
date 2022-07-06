@@ -33,7 +33,6 @@ function getRndInteger(min, max) {
 }
 
 function resetAll(){ //? перезапуск
-  textOut.innerText = ''
   textIn.innerText = ''
   spN = ''
   er_ror = 0
@@ -72,6 +71,9 @@ function printOutRandom(){
           tempStr += ' ' + dublicate
       }
     textIn.innerText = tempStr
+
+    console.log(tempStr.length)
+
     }
   str = textIn.innerText.split('') //? массив из строки
   lengStr = str.length
