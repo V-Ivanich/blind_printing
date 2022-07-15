@@ -8,6 +8,8 @@ err_r = document.querySelector('.err_or'),
 winAlert = document.querySelector('#alert_s'),
 visual_err = document.querySelector('.visual')
 
+let audioYes = new Audio('./audio/yes.mp3');
+let audioNo =new Audio('./audio/no.mp3')
 
 const btn_Begin = document.querySelector('#beginning'),
   btn_Midd = document.querySelector('#middle'),
@@ -124,11 +126,15 @@ function key_D(e){
   if(str[0] == e.key && e.key != 'Shift'){
     spN += str[0]
     str.shift()
+    audioYes.currentTime = 0;
+    audioYes.play();
     textIn.innerHTML = `<span class="painting">${spN}</span>` + str.join('')
   }
   else if(e.key != 'Shift'){
     er_ror++
     err_r.innerHTML = ' Ошибок : ' + er_ror
+    audioNo.currentTime = 0;
+    audioNo.play()
     show_error();
   }
 }
