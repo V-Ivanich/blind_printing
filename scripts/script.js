@@ -57,6 +57,7 @@ btn_Begin.addEventListener('click', () => {
   printOutRandom()
 })
 
+
 //! функция создания и отрисовки строки
 function printOutRandom(){
   let temp = getRndInteger(0, active_dictionary.length - 1)//? получение строки
@@ -115,28 +116,32 @@ winAlert.addEventListener('click', () => {
   winAlert.classList.add('no_activeAlert');
 })
 
+//! Нажатие клавиш
 function key_D(e){
-    settingsTime()
-
-  baseKey.forEach(elem => {
-    if(elem.id == e.keyCode){
-      elem.classList.add('activeKey')
+  settingsTime()
+  if(str.length != 0 && (e.keyCode == 13 || e.keyCode == 16 || e.keyCode == 32 ||
+    (e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 64 && e.keyCode < 91) ||
+    (e.keyCode > 185 && e.keyCode < 193) || (e.keyCode > 218 && e.keyCode < 223))){
+    baseKey.forEach(elem => {
+      if(elem.id == e.keyCode){
+        elem.classList.add('activeKey')
+      } else return
+    })
+    if(str[0] == e.key && e.key != 'Shift'){
+      spN += str[0]
+      str.shift()
+      audioYes.currentTime = 0;
+      audioYes.play();
+      textIn.innerHTML = `<span class="painting">${spN}</span>` + str.join('')
     }
-  })
-  if(str[0] == e.key && e.key != 'Shift'){
-    spN += str[0]
-    str.shift()
-    audioYes.currentTime = 0;
-    audioYes.play();
-    textIn.innerHTML = `<span class="painting">${spN}</span>` + str.join('')
-  }
-  else if(e.key != 'Shift'){
-    er_ror++
-    err_r.innerHTML = ' Ошибок : ' + er_ror
-    audioNo.currentTime = 0;
-    audioNo.play()
-    show_error();
-  }
+    else if(e.key != 'Shift'){
+      er_ror++
+      err_r.innerHTML = ' Ошибок : ' + er_ror
+      audioNo.currentTime = 0;
+      audioNo.play()
+      show_error();
+    }
+  } else return
 }
 
 function  up_key(e){
