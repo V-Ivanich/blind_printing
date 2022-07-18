@@ -7,6 +7,7 @@ let textIn = document.querySelector('.in_text'),
 btnInfo = document.querySelector('#btn_spr'),
 err_r = document.querySelector('.err_or'),
 winAlert = document.querySelector('#alert_s'),
+shiftKey = document.querySelectorAll('.keyShift'),
 visual_err = document.querySelector('.visual')
 
 let audioYes = new Audio('./audio/yes.mp3');
