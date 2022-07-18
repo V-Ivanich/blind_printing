@@ -1,5 +1,6 @@
 import {basEngl} from "../modules/base.js";
 import { beginWords } from "../modules/beginer.js";
+import { rus } from "../modules/rus.js";
 
 const allBtn = document.querySelectorAll('.key_1')
 let textIn = document.querySelector('.in_text'),
