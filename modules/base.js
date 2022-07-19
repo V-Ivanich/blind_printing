@@ -79,7 +79,7 @@ const baseStr = {
   "By definition, null has no prototype, and acts as the fi",
   "nal link in this prototype chain. Nearly all objects Jav"
 ],
-words_ru: [
+wordsRus: [
   "Бывший чиновник интендантского управления, отставной кол",
   "лежский секретарь Лахматов, сидел у себя за столом и, вы",
   "пивая шестнадцатую рюмку, размышлял о братстве, равенств",

@@ -1,6 +1,6 @@
 import {basEngl} from "../modules/base.js";
 import { beginWords } from "../modules/beginer.js";
-import { rus } from "../modules/rus.js";
+import { replAce } from "../modules/replac_Ment.js";
 import { shiftBtn } from "../modules/btnShift.js"
 
 const allBtn = document.querySelectorAll('.key_1'),
@@ -26,6 +26,7 @@ star,
 er_ror = 0,
 lengStr = 0,
 anvanFlag = false,
+langFlag = false,
 active_dictionary = beginWords.words,
 endTime,
 upBtn = shiftBtn.unShift_us,
@@ -40,21 +41,26 @@ function resetAll(){ //? перезапуск
   textIn.innerText = ''
   spN = ''
   er_ror = 0
+  tempStr = ''
 }
 
 //! выбор языка
 btn_lag.forEach(item => {
+
   item.addEventListener('click', (e) => {
     btn_lag.forEach(elem => {
       elem.classList.remove('active')
     })
     e.target.classList.add('active')
+    spN = ''
     if( e.target.dataset.lang == 'us'){
       upBtn = shiftBtn.unShift_us
       downBtn = shiftBtn.us_shift
+      langFlag = false
     } else {
       upBtn = shiftBtn.unShift_ru
       downBtn = shiftBtn.ru_shift
+      langFlag = true
     }
     languageSwitching(upBtn)
   })
@@ -68,12 +74,22 @@ level.forEach(item => {
     })
     e.target.classList.add('active')
     if( e.target.dataset.level == 1){
+      if(langFlag){
+        active_dictionary = beginWords.wordsRus
+      } 
+      else {
+        active_dictionary = beginWords.words
+      }
       anvanFlag = false
-      active_dictionary = beginWords.words
     }
     else {
-      anvanFlag = true
-      active_dictionary = basEngl.words
+      if(langFlag){
+        active_dictionary =basEngl.wordsRus
+      }
+      else {
+        active_dictionary = basEngl.words
+        }
+        anvanFlag = true
     }
     printOutRandom()
   })
@@ -141,6 +157,7 @@ winAlert.addEventListener('click', () => {
 
 //! Нажатие клавиш
 function key_D(e){
+  let checkKey
   settingsTime()
   if(str.length != 0 && (e.keyCode == 13 || e.keyCode == 16 || e.keyCode == 32 ||
     (e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 64 && e.keyCode < 91) ||
@@ -150,7 +167,13 @@ function key_D(e){
         elem.classList.add('activeKey')
       } else return
     })
-    if(str[0] == e.key && e.key != 'Shift'){
+//! замена латиницы на кирилицу
+    if(langFlag){
+      checkKey = replAce[e.key]
+      console.log(checkKey)
+    } else checkKey = e.key
+
+    if(str[0] == checkKey && e.key != 'Shift'){
       spN += str[0]
       str.shift()
       audioYes.currentTime = 0;
