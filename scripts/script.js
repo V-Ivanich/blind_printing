@@ -1,8 +1,10 @@
 import {basEngl} from "../modules/base.js";
 import { beginWords } from "../modules/beginer.js";
 import { rus } from "../modules/rus.js";
+import { shiftBtn } from "../modules/btnShift.js"
 
-const allBtn = document.querySelectorAll('.key_1')
+const allBtn = document.querySelectorAll('.key_1'),
+  level = document.querySelectorAll('.diff_level') //? кнопки уровня сложности
 let textIn = document.querySelector('.in_text'),
 btnInfo = document.querySelector('#btn_spr'),
 err_r = document.querySelector('.err_or'),
@@ -13,11 +15,7 @@ visual_err = document.querySelector('.visual')
 let audioYes = new Audio('./audio/yes.mp3');
 let audioNo =new Audio('./audio/no.mp3')
 
-const btn_Begin = document.querySelector('#beginning'),
-  btn_Midd = document.querySelector('#middle'),
-  btn_Advan = document.querySelector('#advanced'),
-  btn_ru = document.querySelector('#ru'),
-  btn_us = document.querySelector('#us'),
+const btn_lag = document.querySelectorAll('.language'), //? выбор языка
   btn_restart = document.querySelector('#res_btn')
 
 
@@ -29,7 +27,9 @@ er_ror = 0,
 lengStr = 0,
 anvanFlag = false,
 active_dictionary = beginWords.words,
-endTime
+endTime,
+upBtn = shiftBtn.unShift_us,
+downBtn = shiftBtn.us_shift
 
 
 function getRndInteger(min, max) {
@@ -42,22 +42,43 @@ function resetAll(){ //? перезапуск
   er_ror = 0
 }
 
+//! выбор языка
+btn_lag.forEach(item => {
+  item.addEventListener('click', (e) => {
+    btn_lag.forEach(elem => {
+      elem.classList.remove('active')
+    })
+    e.target.classList.add('active')
+    if( e.target.dataset.lang == 'us'){
+      upBtn = shiftBtn.unShift_us
+      downBtn = shiftBtn.us_shift
+    } else {
+      upBtn = shiftBtn.unShift_ru
+      downBtn = shiftBtn.ru_shift
+    }
+    languageSwitching(upBtn)
+  })
+})
+
 //! кнопки выбора уровня сложности
-btn_Advan.addEventListener('click', () => {
-  active_dictionary = basEngl.words
-  anvanFlag = true
-  printOutRandom()
+level.forEach(item => {
+  item.addEventListener('click', (e) => {
+    level.forEach(elem => {
+      elem.classList.remove('active')
+    })
+    e.target.classList.add('active')
+    if( e.target.dataset.level == 1){
+      anvanFlag = false
+      active_dictionary = beginWords.words
+    }
+    else {
+      anvanFlag = true
+      active_dictionary = basEngl.words
+    }
+    printOutRandom()
+  })
 })
-btn_Midd.addEventListener('click', () => {
-  active_dictionary = basEngl.words
-  anvanFlag = false
-  printOutRandom()
-})
-btn_Begin.addEventListener('click', () => {
-  active_dictionary = beginWords.words
-  anvanFlag = false
-  printOutRandom()
-})
+
 
 
 //! функция создания и отрисовки строки
@@ -136,7 +157,9 @@ function key_D(e){
       audioYes.play();
       textIn.innerHTML = `<span class="painting">${spN}</span>` + str.join('')
     }
-    else if(e.key != 'Shift'){
+    else if(e.key == 'Shift'){
+      languageSwitching(downBtn)
+    } else {
       er_ror++
       err_r.innerHTML = ' Ошибок : ' + er_ror
       audioNo.currentTime = 0;
@@ -146,7 +169,16 @@ function key_D(e){
   } else return
 }
 
+function languageSwitching(attrb){
+  shiftKey.forEach((item, index )=> {
+    item.innerText = attrb[index]
+  })
+}
+
 function  up_key(e){
+  if(e.key == 'Shift'){
+    languageSwitching(upBtn)
+  }
   if(e.key == 'Enter' && str.length == 0){
     resetAll()
     printOutRandom()
