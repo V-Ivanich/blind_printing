@@ -41,7 +41,6 @@ function resetAll(){ //? перезапуск
   textIn.innerText = ''
   spN = ''
   er_ror = 0
-  tempStr = ''
 }
 
 //! выбор языка
@@ -170,7 +169,6 @@ function key_D(e){
 //! замена латиницы на кирилицу
     if(langFlag){
       checkKey = replAce[e.key]
-      console.log(checkKey)
     } else checkKey = e.key
 
     if(str[0] == checkKey && e.key != 'Shift'){
