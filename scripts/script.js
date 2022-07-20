@@ -7,13 +7,15 @@ const allBtn = document.querySelectorAll('.key_1'),
   level = document.querySelectorAll('.diff_level') //? кнопки уровня сложности
 let textIn = document.querySelector('.in_text'),
 btnInfo = document.querySelector('#btn_spr'),
-err_r = document.querySelector('.err_or'),
+errorText = document.querySelector('.err_or'),
 winAlert = document.querySelector('#alert_s'),
 shiftKey = document.querySelectorAll('.keyShift'),
-visual_err = document.querySelector('.visual')
+visual_err = document.querySelector('.visual'),
+lab_result = document.querySelector('.result')
 
-let audioYes = new Audio('./audio/yes.mp3');
+let audioYes = new Audio('./audio/yes.mp3')
 let audioNo =new Audio('./audio/no.mp3')
+let audioTada = new Audio('./audio/tada.mp3')
 
 const btn_lag = document.querySelectorAll('.language'), //? выбор языка
   btn_restart = document.querySelector('#res_btn')
@@ -25,7 +27,6 @@ str =[],
 star,
 er_ror = 0,
 lengStr = 0,
-anvanFlag = false,
 langFlag = false,
 active_dictionary = beginWords.words,
 endTime,
@@ -39,19 +40,19 @@ function getRndInteger(min, max) {
 
 function resetAll(){ //? перезапуск
   textIn.innerText = ''
+  lab_result.innerText = ''
   spN = ''
   er_ror = 0
+  errorText. innerHTML = 'Ошибок : 0'
 }
 
 //! выбор языка
 btn_lag.forEach(item => {
-
   item.addEventListener('click', (e) => {
     btn_lag.forEach(elem => {
       elem.classList.remove('active')
     })
     e.target.classList.add('active')
-    spN = ''
     if( e.target.dataset.lang == 'us'){
       upBtn = shiftBtn.unShift_us
       downBtn = shiftBtn.us_shift
@@ -62,8 +63,31 @@ btn_lag.forEach(item => {
       langFlag = true
     }
     languageSwitching(upBtn)
+    levelUp()
   })
 })
+
+function levelUp() {
+  let temp = document.querySelector('.dropdown-item.diff_level.active')
+  if( temp.dataset.level == 1){
+    if(langFlag){
+      active_dictionary = beginWords.wordsRus
+    } 
+    else {
+      active_dictionary = beginWords.words
+    }
+  }
+  else {
+    if(langFlag){
+      active_dictionary =basEngl.wordsRus
+    }
+    else {
+      active_dictionary = basEngl.words
+      }
+  }
+  resetAll()
+  printOutRandom()
+}
 
 //! кнопки выбора уровня сложности
 level.forEach(item => {
@@ -72,25 +96,7 @@ level.forEach(item => {
       elem.classList.remove('active')
     })
     e.target.classList.add('active')
-    if( e.target.dataset.level == 1){
-      if(langFlag){
-        active_dictionary = beginWords.wordsRus
-      } 
-      else {
-        active_dictionary = beginWords.words
-      }
-      anvanFlag = false
-    }
-    else {
-      if(langFlag){
-        active_dictionary =basEngl.wordsRus
-      }
-      else {
-        active_dictionary = basEngl.words
-        }
-        anvanFlag = true
-    }
-    printOutRandom()
+    levelUp()
   })
 })
 
@@ -112,9 +118,6 @@ function printOutRandom(){
           tempStr += ' ' + dublicate
       }
     textIn.innerText = tempStr
-
-    console.log(tempStr.length)
-
     }
   str = textIn.innerText.split('') //? массив из строки
   lengStr = str.length
@@ -134,8 +137,10 @@ function settingsTime() {
   if(str.length == 1) {
     endTime = new Date().getTime() //? 'конец' таймера
     let temp = parseInt(3000/((endTime - star)/1000))
-    document.querySelector('.result').innerHTML = ' ' + temp + ' сим. в мин.'
-    err_r.innerHTML = ' Ошибок : ' + er_ror;
+    lab_result.innerHTML = ' ' + temp + ' сим. в мин.'
+    errorText.innerHTML = ' Ошибок : ' + er_ror
+    audioTada.currentTime = 0
+    audioTada.play()
   }
 }
 
@@ -143,7 +148,7 @@ btn_restart.addEventListener('click', () => {
   resetAll();
   printOutRandom();
   document.querySelector('.result').innerHTML = ''
-  err_r.innerHTML = ' Ошибок : ' + er_ror;
+  errorText.innerHTML = ' Ошибок : ' + er_ror;
   show_error();
 })
 
@@ -182,7 +187,7 @@ function key_D(e){
       languageSwitching(downBtn)
     } else {
       er_ror++
-      err_r.innerHTML = ' Ошибок : ' + er_ror
+      errorText.innerHTML = ' Ошибок : ' + er_ror
       audioNo.currentTime = 0;
       audioNo.play()
       show_error();
