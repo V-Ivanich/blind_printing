@@ -27,6 +27,7 @@ str =[],
 star,
 er_ror = 0,
 lengStr = 0,
+baseFlag = '0',
 langFlag = false,
 active_dictionary = beginWords.words,
 endTime,
@@ -72,9 +73,11 @@ function levelUp() {
   let temp = document.querySelector('.dropdown-item.diff_level.active')
   if( temp.dataset.level == 1){
     active_dictionary = langFlag ? beginWords.wordsRus : beginWords.words
+    baseFlag = beginWords.flag
   }
   else {
     active_dictionary = langFlag ? basEngl.wordsRus : basEngl.words
+    baseFlag = basEngl.flag
   }
   resetAll()
   printOutRandom()
@@ -96,20 +99,21 @@ level.forEach(item => {
 //! функция создания и отрисовки строки
 function printOutRandom(){
   let temp = getRndInteger(0, active_dictionary.length - 1)//? получение строки
-  if(active_dictionary.flag == '1'){
-    textIn.innerText = active_dictionary[temp]
-    } else {
+  switch(baseFlag){
+    case '1':
+      textIn.innerText = active_dictionary[temp]
+    break
+    case '0':
       let tempStr = active_dictionary[temp]
       const dublicate = tempStr
       while(tempStr.length < 56){
         let prom = tempStr.length + dublicate.length + 1
-        if(prom > 56){
-        break
-        } else
-          tempStr += ' ' + dublicate
+        if(prom > 56) break
+        else tempStr += ' ' + dublicate
       }
     textIn.innerText = tempStr
-    }
+    break
+  }
   str = textIn.innerText.split('') //? массив из строки
   lengStr = str.length
 }
