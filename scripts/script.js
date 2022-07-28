@@ -67,23 +67,14 @@ btn_lag.forEach(item => {
   })
 })
 
+//! Подключение библиотек в зависимости от уровня
 function levelUp() {
   let temp = document.querySelector('.dropdown-item.diff_level.active')
   if( temp.dataset.level == 1){
-    if(langFlag){
-      active_dictionary = beginWords.wordsRus
-    } 
-    else {
-      active_dictionary = beginWords.words
-    }
+    active_dictionary = langFlag ? beginWords.wordsRus : beginWords.words
   }
   else {
-    if(langFlag){
-      active_dictionary =basEngl.wordsRus
-    }
-    else {
-      active_dictionary = basEngl.words
-      }
+    active_dictionary = langFlag ? basEngl.wordsRus : basEngl.words
   }
   resetAll()
   printOutRandom()
