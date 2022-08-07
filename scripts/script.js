@@ -71,7 +71,8 @@ btn_lag.forEach(item => {
 //! Подключение библиотек в зависимости от уровня
 function levelUp() {
   let temp = document.querySelector('.dropdown-item.diff_level.active')
-  if( temp.dataset.level == 1){
+  console.log(typeof (temp.dataset.level))
+  if( temp.dataset.level === '1'){
     active_dictionary = langFlag ? beginWords.wordsRus : beginWords.words
     baseFlag = beginWords.flag
   }
