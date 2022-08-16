@@ -6,6 +6,8 @@ import { shiftBtn } from "../modules/btnShift.js"
 const allBtn = document.querySelectorAll('.key_1'),
   level = document.querySelectorAll('.diff_level') //? кнопки уровня сложности
 let textIn = document.querySelector('.in_text'),
+textIn2 = document.querySelector('.in_text1'),
+textIn3 = document.querySelector('.in_text2'),
 btnInfo = document.querySelector('#btn_spr'),
 errorText = document.querySelector('.err_or'),
 winAlert = document.querySelector('#alert_s'),
@@ -31,6 +33,7 @@ baseFlag = '0',
 langFlag = false,
 active_dictionary = beginWords.words,
 endTime,
+mySetLevels = '1',
 upBtn = shiftBtn.unShift_us,
 downBtn = shiftBtn.us_shift
 
@@ -70,9 +73,7 @@ btn_lag.forEach(item => {
 
 //! Подключение библиотек в зависимости от уровня
 function levelUp() {
-  let temp = document.querySelector('.dropdown-item.diff_level.active')
-  console.log(typeof (temp.dataset.level))
-  if( temp.dataset.level === '1'){
+  if( mySetLevels === '1'){
     active_dictionary = langFlag ? beginWords.wordsRus : beginWords.words
     baseFlag = beginWords.flag
   }
@@ -91,18 +92,29 @@ level.forEach(item => {
       elem.classList.remove('active')
     })
     e.target.classList.add('active')
+    mySetLevels = e.target.dataset.levels
     levelUp()
   })
 })
 
-
+//? получение строки
+function getSrings(min, max){
+  return getRndInteger(min, max)
+}
 
 //! функция создания и отрисовки строки
 function printOutRandom(){
-  let temp = getRndInteger(0, active_dictionary.length - 1)//? получение строки
+  let temp = getSrings(0, active_dictionary.length - 1)
+
   switch(baseFlag){
     case '1':
       textIn.innerText = active_dictionary[temp]
+      if( mySetLevels === '3'){
+        temp = getSrings(0, active_dictionary.length - 1)
+        textIn2.innerText = active_dictionary[temp]
+        temp = getSrings(0, active_dictionary.length - 1)
+        textIn3.innerText = active_dictionary[temp]
+      }
     break
     case '0':
       let tempStr = active_dictionary[temp]
