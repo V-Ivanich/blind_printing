@@ -13,6 +13,8 @@ errorText = document.querySelector('.err_or'),
 winAlert = document.querySelector('#alert_s'),
 shiftKey = document.querySelectorAll('.keyShift'),
 visual_err = document.querySelector('.visual'),
+winResult = document.querySelector('#btnResult'),
+windowResult = document.querySelector('#windowResult'),
 lab_result = document.querySelector('.result')
 
 let audioYes = new Audio('./audio/yes.mp3')
@@ -199,6 +201,14 @@ btnInfo.onclick = () => {
 }
 winAlert.addEventListener('click', () => {
   winAlert.classList.add('no_activeAlert');
+})
+
+winResult.addEventListener('click', () => {
+  windowResult.classList.remove('no_activeAlert');
+})
+
+windowResult.addEventListener('click', () => {
+  windowResult.classList.add('no_activeAlert');
 })
 
 //! Нажатие клавиш
