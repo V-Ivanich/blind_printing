@@ -20,14 +20,17 @@ let audioNo =new Audio('./audio/no.mp3')
 let audioTada = new Audio('./audio/tada.mp3')
 
 const btn_lag = document.querySelectorAll('.language'), //? выбор языка
-  btn_restart = document.querySelector('#res_btn')
+  btn_restartt = document.querySelector('#res_btn')
 
 
 let baseKey = Array.from(allBtn), //! кнопки на виртуалке
 spN = '',
 str =[],
-star,
+arrTemp = [],
+start,
 er_ror = 0,
+lineBlock = 0, //? количество строк в визуальном блоке
+arrLine = [textIn, textIn2, textIn3], //? массив параграфов
 lengStr = 0,
 baseFlag = '0',
 langFlag = false,
@@ -36,7 +39,8 @@ endTime,
 mySetLevels = '1',
 upBtn = shiftBtn.unShift_us,
 downBtn = shiftBtn.us_shift
-
+let tempStr,
+  numberLine = 0
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -44,7 +48,10 @@ function getRndInteger(min, max) {
 
 function resetAll(){ //? перезапуск
   textIn.innerText = ''
+  textIn2.innerText = ''
+  textIn3.innerText = ''
   lab_result.innerText = ''
+  numberLine = 0
   spN = ''
   er_ror = 0
   errorText. innerHTML = 'Ошибок : 0'
@@ -105,29 +112,38 @@ function getSrings(min, max){
 //! функция создания и отрисовки строки
 function printOutRandom(){
   let temp = getSrings(0, active_dictionary.length - 1)
-
+  lineBlock = 0
   switch(baseFlag){
     case '1':
-      textIn.innerText = active_dictionary[temp]
-      if( mySetLevels === '3'){
+      arrLine[0].innerText = active_dictionary[temp]
+      tempStr = active_dictionary[temp]
+
+      if( mySetLevels === '3'){ //? формиромание еще двух строк
         temp = getSrings(0, active_dictionary.length - 1)
-        textIn2.innerText = active_dictionary[temp]
+        arrLine[1].innerText = active_dictionary[temp]
+        tempStr += active_dictionary[temp]
+
         temp = getSrings(0, active_dictionary.length - 1)
-        textIn3.innerText = active_dictionary[temp]
+        arrLine[2].innerText = active_dictionary[temp]
+        tempStr += active_dictionary[temp]
+
+        lineBlock = 2
       }
     break
     case '0':
-      let tempStr = active_dictionary[temp]
+      tempStr = active_dictionary[temp]
       const dublicate = tempStr
       while(tempStr.length < 56){
         let prom = tempStr.length + dublicate.length + 1
         if(prom > 56) break
         else tempStr += ' ' + dublicate
       }
-    textIn.innerText = tempStr
+    arrLine[0].innerText = tempStr
     break
   }
-  str = textIn.innerText.split('') //? массив из строки
+
+  str = tempStr.split('') //? массив из строки
+  arrTemp = str.slice(0,56) //? вспомагательный массив
   lengStr = str.length
 }
 
@@ -140,11 +156,11 @@ function show_error() {
 
 function settingsTime() {
   if(str.length == lengStr){ //? начало отсчета таймера
-    star = new Date().getTime()
+    start = new Date().getTime()
   }
   if(str.length == 1) {
     endTime = new Date().getTime() //? 'конец' таймера
-    let temp = parseInt(3000/((endTime - star)/1000))
+    let temp = parseInt(3000/((endTime - start)/1000))
     lab_result.innerHTML = ' ' + temp + ' сим. в мин.'
     errorText.innerHTML = ' Ошибок : ' + er_ror
     audioTada.currentTime = 0
@@ -152,7 +168,25 @@ function settingsTime() {
   }
 }
 
-btn_restart.addEventListener('click', () => {
+
+function spanColor(){ //? фу-я выделения символов
+  arrLine[numberLine].innerHTML = `<span class="painting">${spN}</span>` + arrTemp.join('')
+  console.log(arrTemp)
+  console.log(str)
+  if(lineBlock){
+    if(arrTemp.length === 0){
+      spN = ''
+      --lineBlock
+      ++numberLine
+      arrTemp = str.slice(0,56)
+      console.log(arrTemp)
+      console.log(str)
+    }
+  }
+}
+
+
+btn_restartt.addEventListener('click', () => {
   resetAll();
   printOutRandom();
   document.querySelector('.result').innerHTML = ''
@@ -185,11 +219,11 @@ function key_D(e){
     } else checkKey = e.key
 
     if(str[0] == checkKey && e.key != 'Shift'){
-      spN += str[0]
+      spN += arrTemp.shift()
       str.shift()
       audioYes.currentTime = 0;
       audioYes.play();
-      textIn.innerHTML = `<span class="painting">${spN}</span>` + str.join('')
+      spanColor()
     }
     else if(e.key == 'Shift'){
       languageSwitching(downBtn)
