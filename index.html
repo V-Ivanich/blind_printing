@@ -54,126 +54,153 @@
         </div>
       </nav>
 
-      <div class="alert alert-secondary no_activeAlert" role="alert" id="windowResult">
-        Результаты:
-        1.
-        2.
-      </div>
-
       <div class="alert alert-secondary no_activeAlert" role="alert" id="alert_s">
         Этот продукт полностью бесплатен, и прост в использовании!
         Появился в результате обучения и отработки полученных навыков.
         Вывод результатов за текущий сеанс (при чистке браузера).
       </div>
 
-    </header>
+      <div class="alert alert-secondary no_activeAlert" role="alert" id="alertTable">
+        <table class="table table-success table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Уровень</th>
+              <th scope="col">Знаков в минуту</th>
+              <th scope="col">Ошибок</th>
+              <th scope="col">Язык</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-danger">
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+  </div>
 
-    <div class="block_info">
-      <div class="metka">
-        <label class="info lab1">Текущий результат: </label>
-      </div>
-      <div class="stroka">
-        <p class="info result"></p>
-      </div>
-      <div class="info err_or">Ошибок : 0</div>
+  </header>
+
+  <div class="block_info">
+    <div class="metka">
+      <label class="info lab1">Текущий результат: </label>
     </div>
-
-    <div class="visual">
-      <p class="test_text in_text"></p>
-      <p class="test_text in_text1"></p>
-      <p class="test_text in_text2"></p>
+    <div class="stroka">
+      <p class="info result"></p>
     </div>
+    <div class="info err_or">Ошибок : 0</div>
+  </div>
+
+  <div class="visual">
+    <p class="test_text in_text"></p>
+    <p class="test_text in_text1"></p>
+    <p class="test_text in_text2"></p>
+  </div>
 
 
-    <div class="contain">
-      <div class="border_keys">
-        <div class="blocks">
-          <div class="key_1 keyShift pink" id="192">`</div>
-          <div class="key_1 keyShift pink" id="49">1</div>
-          <div class="key_1 keyShift orange" id="50">2</div>
-          <div class="key_1 keyShift green" id="51">3</div>
-          <div class="key_1 keyShift blue_white" id="52">4</div>
-          <div class="key_1 keyShift blue_white" id="53">5</div>
-          <div class="key_1 keyShift blue_white" id="54">6</div>
-          <div class="key_1 keyShift blue" id="55">7</div>
-          <div class="key_1 keyShift green" id="56">8</div>
-          <div class="key_1 keyShift orange" id="57">9</div>
-          <div class="key_1 keyShift pink" id="48">0</div>
-          <div class="key_1 keyShift pink" id="189">-</div>
-          <div class="key_1 keyShift pink" id="187">=</div>
-          <div class="key_1 max_2" id="8">B.space</div>
-        </div>
-
-        <div class="blocks">
-          <div class="key_1 max">Tab</div>
-          <div class="key_1 keyShift pink" id="81">q</div>
-          <div class="key_1 keyShift orange" id="87">w</div>
-          <div class="key_1 keyShift green" id="69">e</div>
-          <div class="key_1 keyShift blue_white" id="82">r</div>
-          <div class="key_1 keyShift blue_white" id="84">t</div>
-          <div class="key_1 keyShift blue" id="89">y</div>
-          <div class="key_1 keyShift blue" id="85">u</div>
-          <div class="key_1 keyShift green" id="73">i</div>
-          <div class="key_1 keyShift orange" id="79">o</div>
-          <div class="key_1 keyShift pink" id="80">p</div>
-          <div class="key_1 keyShift pink" id="219">[</div>
-          <div class="key_1 keyShift pink" id="221">]</div>
-          <div class="key_1 keyShift max pink" id="220">\</div>
-        </div>
-
-        <div class="blocks">
-          <div class="key_1 pink max_0 " id="20">C.Lock</div>
-          <div class="key_1 keyShift pink" id="65">a</div>
-          <div class="key_1 keyShift orange" id="83">s</div>
-          <div class="key_1 keyShift green" id="68">d</div>
-          <div class="key_1 keyShift blue_white" id="70">f</div>
-          <div class="key_1 keyShift blue_white" id="71">g</div>
-          <div class="key_1 keyShift blue" id="72">h</div>
-          <div class="key_1 keyShift blue" id="74">j</div>
-          <div class="key_1 keyShift green" id="75">k</div>
-          <div class="key_1 keyShift orange" id="76">l</div>
-          <div class="key_1 keyShift pink" id="186">;</div>
-          <div class="key_1 keyShift pink" id="222">'</div>
-          <div class="key_1 pink max_3" id="13">Enter</div>
-        </div>
-
-        <div class="blocks">
-          <div class="key_1 pink max_3" id="16">LShift</div>
-          <div class="key_1 keyShift pink" id="90">z</div>
-          <div class="key_1 keyShift orange" id="88">x</div>
-          <div class="key_1 keyShift green" id="67">c</div>
-          <div class="key_1 keyShift blue_white" id="86">v</div>
-          <div class="key_1 keyShift blue_white" id="66">b</div>
-          <div class="key_1 keyShift blue" id="78">n</div>
-          <div class="key_1 keyShift blue" id="77">m</div>
-          <div class="key_1 keyShift green" id="188">,</div>
-          <div class="key_1 keyShift orange" id="190">.</div>
-          <div class="key_1 keyShift pink" id="191">/</div>
-          <div class="key_1"></div>
-          <div class="key_1 pink max_0 " id="16">RShift</div>
-        </div>
-
-        <div class="blocks">
-          <div class="key_1 max_2 " id="17">LCtl</div>
-          <div class="key_1"></div>
-          <div class="key_1 max ">Alt</div>
-          <div class="key_1 max_sp blue" id="32">Space</div>
-          <div class="key_1 max ">Alt</div>
-          <div class="key_1"></div>
-          <div class="key_1 max_2 " id="17">RCtl</div>
-        </div>
-
+  <div class="contain">
+    <div class="border_keys">
+      <div class="blocks">
+        <div class="key_1 keyShift pink" id="192">`</div>
+        <div class="key_1 keyShift pink" id="49">1</div>
+        <div class="key_1 keyShift orange" id="50">2</div>
+        <div class="key_1 keyShift green" id="51">3</div>
+        <div class="key_1 keyShift blue_white" id="52">4</div>
+        <div class="key_1 keyShift blue_white" id="53">5</div>
+        <div class="key_1 keyShift blue_white" id="54">6</div>
+        <div class="key_1 keyShift blue" id="55">7</div>
+        <div class="key_1 keyShift green" id="56">8</div>
+        <div class="key_1 keyShift orange" id="57">9</div>
+        <div class="key_1 keyShift pink" id="48">0</div>
+        <div class="key_1 keyShift pink" id="189">-</div>
+        <div class="key_1 keyShift pink" id="187">=</div>
+        <div class="key_1 max_2" id="8">B.space</div>
       </div>
 
+      <div class="blocks">
+        <div class="key_1 max">Tab</div>
+        <div class="key_1 keyShift pink" id="81">q</div>
+        <div class="key_1 keyShift orange" id="87">w</div>
+        <div class="key_1 keyShift green" id="69">e</div>
+        <div class="key_1 keyShift blue_white" id="82">r</div>
+        <div class="key_1 keyShift blue_white" id="84">t</div>
+        <div class="key_1 keyShift blue" id="89">y</div>
+        <div class="key_1 keyShift blue" id="85">u</div>
+        <div class="key_1 keyShift green" id="73">i</div>
+        <div class="key_1 keyShift orange" id="79">o</div>
+        <div class="key_1 keyShift pink" id="80">p</div>
+        <div class="key_1 keyShift pink" id="219">[</div>
+        <div class="key_1 keyShift pink" id="221">]</div>
+        <div class="key_1 keyShift max pink" id="220">\</div>
+      </div>
+
+      <div class="blocks">
+        <div class="key_1 pink max_0 " id="20">C.Lock</div>
+        <div class="key_1 keyShift pink" id="65">a</div>
+        <div class="key_1 keyShift orange" id="83">s</div>
+        <div class="key_1 keyShift green" id="68">d</div>
+        <div class="key_1 keyShift blue_white" id="70">f</div>
+        <div class="key_1 keyShift blue_white" id="71">g</div>
+        <div class="key_1 keyShift blue" id="72">h</div>
+        <div class="key_1 keyShift blue" id="74">j</div>
+        <div class="key_1 keyShift green" id="75">k</div>
+        <div class="key_1 keyShift orange" id="76">l</div>
+        <div class="key_1 keyShift pink" id="186">;</div>
+        <div class="key_1 keyShift pink" id="222">'</div>
+        <div class="key_1 pink max_3" id="13">Enter</div>
+      </div>
+
+      <div class="blocks">
+        <div class="key_1 pink max_3" id="16">LShift</div>
+        <div class="key_1 keyShift pink" id="90">z</div>
+        <div class="key_1 keyShift orange" id="88">x</div>
+        <div class="key_1 keyShift green" id="67">c</div>
+        <div class="key_1 keyShift blue_white" id="86">v</div>
+        <div class="key_1 keyShift blue_white" id="66">b</div>
+        <div class="key_1 keyShift blue" id="78">n</div>
+        <div class="key_1 keyShift blue" id="77">m</div>
+        <div class="key_1 keyShift green" id="188">,</div>
+        <div class="key_1 keyShift orange" id="190">.</div>
+        <div class="key_1 keyShift pink" id="191">/</div>
+        <div class="key_1"></div>
+        <div class="key_1 pink max_0 " id="16">RShift</div>
+      </div>
+
+      <div class="blocks">
+        <div class="key_1 max_2 " id="17">LCtl</div>
+        <div class="key_1"></div>
+        <div class="key_1 max ">Alt</div>
+        <div class="key_1 max_sp blue" id="32">Space</div>
+        <div class="key_1 max ">Alt</div>
+        <div class="key_1"></div>
+        <div class="key_1 max_2 " id="17">RCtl</div>
+      </div>
+
     </div>
 
-    <script type="module" src="./scripts/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-      crossorigin="anonymous"></script>
+  </div>
+
+  <script type="module" src="./scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

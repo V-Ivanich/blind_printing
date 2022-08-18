@@ -8,13 +8,13 @@ const allBtn = document.querySelectorAll('.key_1'),
 let textIn = document.querySelector('.in_text'),
 textIn2 = document.querySelector('.in_text1'),
 textIn3 = document.querySelector('.in_text2'),
-btnInfo = document.querySelector('#btn_spr'),
+btnInfo = document.querySelector('#btn_spr'), //? кнопка справки
+btnResult = document.querySelector('#btnResult'),
 errorText = document.querySelector('.err_or'),
-winAlert = document.querySelector('#alert_s'),
+winAlert = document.querySelector('#alert_s'), //? окно справки
+alertTable = document.querySelector('#alertTable'),
 shiftKey = document.querySelectorAll('.keyShift'),
 visual_err = document.querySelector('.visual'),
-winResult = document.querySelector('#btnResult'),
-windowResult = document.querySelector('#windowResult'),
 lab_result = document.querySelector('.result')
 
 let audioYes = new Audio('./audio/yes.mp3')
@@ -191,6 +191,7 @@ function settingsTime() {
     resultTable.timeSimbol = temp //* to the table
     resultTable.errorsPerSession = er_ror //* to the table
     generalTable.push({...resultTable})
+
     localStorage.setItem('resultSpeedTest', JSON.stringify(generalTable)) //!запись в "браузер"
   }
 }
@@ -208,6 +209,12 @@ function spanColor(){ //? фу-я выделения символов
   }
 }
 
+btnResult.addEventListener('click', () => {
+  alertTable.classList.remove('no_activeAlert')
+})
+alertTable.addEventListener('click', () => {
+  alertTable.classList.add('no_activeAlert')
+})
 
 btn_restartt.addEventListener('click', () => {
   resetAll();
@@ -218,19 +225,12 @@ btn_restartt.addEventListener('click', () => {
 })
 
 btnInfo.onclick = () => {
-  winAlert.classList.remove('no_activeAlert');
+  winAlert.classList.remove('no_activeAlert')
 }
 winAlert.addEventListener('click', () => {
-  winAlert.classList.add('no_activeAlert');
+  winAlert.classList.add('no_activeAlert')
 })
 
-winResult.addEventListener('click', () => {
-  windowResult.classList.remove('no_activeAlert');
-})
-
-windowResult.addEventListener('click', () => {
-  windowResult.classList.add('no_activeAlert');
-})
 
 //! Нажатие клавиш
 function key_D(e){
