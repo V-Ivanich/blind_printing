@@ -44,6 +44,14 @@ downBtn = shiftBtn.us_shift
 let tempStr,
   numberLine = 0
 
+const resultTable = { //! Таблица результатов за сеанс
+  'level' : 1,
+  'language' : 'us',
+  'timeSimbol' : 0,
+  'errorsPerSession' : 0
+}
+const generalTable = [] //! Общая таблица
+
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
@@ -70,10 +78,16 @@ btn_lag.forEach(item => {
       upBtn = shiftBtn.unShift_us
       downBtn = shiftBtn.us_shift
       langFlag = false
+
+      resultTable.language = 'us' //* to the table
+
     } else {
       upBtn = shiftBtn.unShift_ru
       downBtn = shiftBtn.ru_shift
       langFlag = true
+
+      resultTable.language = 'ru' //* to the table
+
     }
     languageSwitching(upBtn)
     levelUp()
@@ -120,6 +134,8 @@ function printOutRandom(){
       arrLine[0].innerText = active_dictionary[temp]
       tempStr = active_dictionary[temp]
 
+      resultTable.level = 2 //* to the table
+
       if( mySetLevels === '3'){ //? формиромание еще двух строк
         temp = getSrings(0, active_dictionary.length - 1)
         arrLine[1].innerText = active_dictionary[temp]
@@ -130,6 +146,8 @@ function printOutRandom(){
         tempStr += active_dictionary[temp]
 
         lineBlock = 2
+
+        resultTable.level = 3 //* to the table
       }
     break
     case '0':
@@ -141,6 +159,8 @@ function printOutRandom(){
         else tempStr += ' ' + dublicate
       }
     arrLine[0].innerText = tempStr
+
+    resultTable.level = 1 //* to the table
     break
   }
 
@@ -167,22 +187,23 @@ function settingsTime() {
     errorText.innerHTML = ' Ошибок : ' + er_ror
     audioTada.currentTime = 0
     audioTada.play()
+
+    resultTable.timeSimbol = temp //* to the table
+    resultTable.errorsPerSession = er_ror //* to the table
+    generalTable.push({...resultTable})
+    localStorage.setItem('resultSpeedTest', JSON.stringify(generalTable)) //!запись в "браузер"
   }
 }
 
 
 function spanColor(){ //? фу-я выделения символов
   arrLine[numberLine].innerHTML = `<span class="painting">${spN}</span>` + arrTemp.join('')
-  console.log(arrTemp)
-  console.log(str)
   if(lineBlock){
     if(arrTemp.length === 0){
       spN = ''
       --lineBlock
       ++numberLine
       arrTemp = str.slice(0,56)
-      console.log(arrTemp)
-      console.log(str)
     }
   }
 }
