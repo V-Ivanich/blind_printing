@@ -1,7 +1,12 @@
-import {basEngl} from "../modules/base.js";
-import { beginWords } from "../modules/beginer.js";
-import { replAce } from "../modules/replac_Ment.js";
+
+
+import {basEngl} from "../modules/base.js"
+import { beginWords } from "../modules/beginer.js"
+import { replAce } from "../modules/replac_Ment.js"
 import { shiftBtn } from "../modules/btnShift.js"
+
+const modal = $.modal()
+
 
 const allBtn = document.querySelectorAll('.key_1'),
   level = document.querySelectorAll('.diff_level') //? кнопки уровня сложности
@@ -9,10 +14,11 @@ let textIn = document.querySelector('.in_text'),
 textIn2 = document.querySelector('.in_text1'),
 textIn3 = document.querySelector('.in_text2'),
 btnInfo = document.querySelector('#btn_spr'), //? кнопка справки
-btnResult = document.querySelector('#btnResult'),
+btnResult = document.querySelector('#btnResult'), //? ---- результат
+modClose = document.querySelector('.modal-close'),
 errorText = document.querySelector('.err_or'),
 winAlert = document.querySelector('#alert_s'), //? окно справки
-alertTable = document.querySelector('#alertTable'),
+alertTable = document.querySelector('#alertTable'), //? окно результатов
 shiftKey = document.querySelectorAll('.keyShift'),
 visual_err = document.querySelector('.visual'),
 lab_result = document.querySelector('.result')
@@ -43,6 +49,8 @@ upBtn = shiftBtn.unShift_us,
 downBtn = shiftBtn.us_shift
 let tempStr,
   numberLine = 0
+
+
 
 const resultTable = { //! Таблица результатов за сеанс
   'level' : 1,
@@ -208,12 +216,12 @@ function spanColor(){ //? фу-я выделения символов
     }
   }
 }
-
+//! вывод таблицы
 btnResult.addEventListener('click', () => {
-  alertTable.classList.remove('no_activeAlert')
+  modal.open()
 })
-alertTable.addEventListener('click', () => {
-  alertTable.classList.add('no_activeAlert')
+modClose.addEventListener('click', () => {
+  modal.close()
 })
 
 btn_restartt.addEventListener('click', () => {
@@ -223,6 +231,7 @@ btn_restartt.addEventListener('click', () => {
   errorText.innerHTML = ' Ошибок : ' + er_ror;
   show_error();
 })
+
 
 btnInfo.onclick = () => {
   winAlert.classList.remove('no_activeAlert')
