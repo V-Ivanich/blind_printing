@@ -13,55 +13,57 @@
 </head>
 
 <body>
-
-  <div class="container">
-
+  <div class="generalContainer">
     <div class="backColor"></div>
-    <div class="modal-block">
-      <div class="modal-window transNo">
 
-        <div class="modal-header">
-          <span class="modal-title">Результаты</span>
-          <span class="modal-close">&times;</span>
+    <div class="container">
+
+      <div class="modal-block">
+        <div class="modal-window transNo">
+
+          <div class="modal-header">
+            <span class="modal-title">Результаты</span>
+            <span class="modal-close">&times;</span>
+          </div>
+
+          <div class="modal-body">
+
+            <table class="table table-success table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Уровень</th>
+                  <th scope="col">Знаков в минуту</th>
+                  <th scope="col">Ошибок</th>
+                  <th scope="col">Язык</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-danger">
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="modal-footer">
+          </div>
+
         </div>
-
-        <div class="modal-body">
-
-          <table class="table table-success table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Уровень</th>
-                <th scope="col">Знаков в минуту</th>
-                <th scope="col">Ошибок</th>
-                <th scope="col">Язык</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="table-danger">
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
-
-        <div class="modal-footer">
-        </div>
-
       </div>
     </div>
     <header>
@@ -212,6 +214,7 @@
 
   </div>
 
+  </div>
 
   <script type="module" src="./scripts/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

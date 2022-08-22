@@ -30,7 +30,6 @@ let audioTada = new Audio('./audio/tada.mp3')
 const btn_lag = document.querySelectorAll('.language'), //? выбор языка
   btn_restartt = document.querySelector('#res_btn')
 
-
 let baseKey = Array.from(allBtn), //! кнопки на виртуалке
 spN = '',
 str =[],
@@ -49,7 +48,6 @@ upBtn = shiftBtn.unShift_us,
 downBtn = shiftBtn.us_shift
 let tempStr,
   numberLine = 0
-
 
 
 const resultTable = { //! Таблица результатов за сеанс
@@ -227,17 +225,19 @@ btnResult.addEventListener('click', () => {
     modalWindow.classList.remove('transNo')
     modalWindow.classList.add('transYes')
   },2000)
+
 })
 
 modClose.addEventListener('click', () => {
   modalWindow.classList.add('flipReverse')
   backColor.classList.remove('activeBack')
-  modBlock.classList.remove('mB-active')
   setTimeout(() => {
     modalWindow.classList.remove('transYes')
     modalWindow.classList.add('transNo')
     modalWindow.classList.remove('flipReverse')
+    modBlock.classList.remove('mB-active')
   },2000)
+
 })
 
 btn_restartt.addEventListener('click', () => {

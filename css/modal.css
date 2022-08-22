@@ -1,5 +1,10 @@
+.generalContainer {
+  position: relative;
+}
 .backColor {
-  position: absolute;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   left: 0;
   top: 0;
   right: 0;
@@ -24,13 +29,12 @@
   position: absolute;
   z-index: -2;
   padding: 10px;
-  left: 35%;
-  top: 20%;
+  left: 38%;
+  top: 30%;
 }
 .mB-active {
   z-index: 100;
 }
-.
 
 .modal-window {
   background-color: rgba(131, 155, 175, 0.89);
@@ -53,7 +57,7 @@
 
 .flip {
   position: relative;
-  animation: rotate 2s;
+  animation: rotate 2.2s;
 }
 @keyframes rotate {
   0% {
@@ -68,7 +72,7 @@
 
 .flipReverse {
   position: relative;
-  animation: rotate2 2s;
+  animation: rotate2 2.2s;
 }
 @keyframes rotate2 {
   0% {
