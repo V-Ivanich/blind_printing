@@ -1,73 +1,82 @@
-
-.wmodal {
-  opacity: 1;
-}
-
-.wmodal.open .modal-window,
-.wmodal.open .modal-overlay {
-  opacity: 1;
-  z-index: 100;
-}
-
-.wmodal.hide .modal-window,
-.wmodal.hide .modal-overlay {
-  opacity: 1;
-  z-index: 100;
-}
-
-.wmodal.hide .modal-window {
-  transition: .5s ease;
-  transform: perspective(3) skewY(90deg);
-}
-.wmodal.hide .modal-overlay {
-  background: rgba(0, 0, 0, 0);
-}
-
-.wmodal.open .modal-window {
-  transition: .5s ease;
-  transform: perspective(0) skewY(0deg);
-}
-.wmodal.open .modal-overlay {
-  background: rgba(0, 0, 0, .5);
-}
-
-.modal-window, .modal-overlay {
-  opacity: 0;
-  z-index: -1;
-}
-.modal-overlay {
-  position: fixed;
-  top: 0;
+.backColor {
+  position: absolute;
   left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0);
-  transition: background .3s ease-out;
+  z-index: -1;
+  opacity: 0;
+  transition: 2s ease;
 }
-.modal-window {
-  width: 600px;
-  margin:0 auto;
-  border-radius: 8px;
-  background-color: rgba(171, 190, 196, 0.911);
-  transform: perspective(3) skewY(90deg);
-  transition: transform .5s ease-in;
+.activeBack {
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 10;
+  opacity: 1;
+  transition: 2s ease;
 }
-.modal-header {
-  padding: 5px 10px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #eee;
-}
-.modal-title {
-  font-size: 1.5rem;
-}
+
 .modal-close {
   cursor: pointer;
 }
-.modal-body {
+
+.modal-block {
+  perspective: 400px;
+  position: absolute;
+  z-index: -2;
   padding: 10px;
+  left: 35%;
+  top: 20%;
 }
-.modal-footer {
-  padding: 5px 10px;
-  border-top: 1px solid #eee;
+.mB-active {
+  z-index: 100;
+}
+.
+
+.modal-window {
+  background-color: rgba(131, 155, 175, 0.89);
+  border: 1px solid #1c1c1c;
+  border-radius: 6px;
+}
+
+.transNo {
+  transform: rotateX(90deg);
+  transform-style: flat;
+  opacity: .3;
+  z-index: -5;
+}
+.transYes {
+  transform: rotateX(0deg);
+  transform-style: flat;
+  opacity: 1;
+  z-index: 101;
+}
+
+.flip {
+  position: relative;
+  animation: rotate 2s;
+}
+@keyframes rotate {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.flipReverse {
+  position: relative;
+  animation: rotate2 2s;
+}
+@keyframes rotate2 {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
 }

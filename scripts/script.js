@@ -5,8 +5,6 @@ import { beginWords } from "../modules/beginer.js"
 import { replAce } from "../modules/replac_Ment.js"
 import { shiftBtn } from "../modules/btnShift.js"
 
-const modal = $.modal()
-
 
 const allBtn = document.querySelectorAll('.key_1'),
   level = document.querySelectorAll('.diff_level') //? кнопки уровня сложности
@@ -16,11 +14,13 @@ textIn3 = document.querySelector('.in_text2'),
 btnInfo = document.querySelector('#btn_spr'), //? кнопка справки
 btnResult = document.querySelector('#btnResult'), //? ---- результат
 modClose = document.querySelector('.modal-close'),
+modBlock = document.querySelector('.modal-block'),
+backColor = document.querySelector('.backColor'),
 errorText = document.querySelector('.err_or'),
 winAlert = document.querySelector('#alert_s'), //? окно справки
-alertTable = document.querySelector('#alertTable'), //? окно результатов
 shiftKey = document.querySelectorAll('.keyShift'),
 visual_err = document.querySelector('.visual'),
+modalWindow = document.querySelector('.modal-window'),
 lab_result = document.querySelector('.result')
 
 let audioYes = new Audio('./audio/yes.mp3')
@@ -216,12 +216,28 @@ function spanColor(){ //? фу-я выделения символов
     }
   }
 }
+
 //! вывод таблицы
 btnResult.addEventListener('click', () => {
-  modal.open()
+  modalWindow.classList.add('flip')
+  backColor.classList.add('activeBack')
+  modBlock.classList.add('mB-active')
+  setTimeout(() => {
+    modalWindow.classList.remove('flip')
+    modalWindow.classList.remove('transNo')
+    modalWindow.classList.add('transYes')
+  },2000)
 })
+
 modClose.addEventListener('click', () => {
-  modal.close()
+  modalWindow.classList.add('flipReverse')
+  backColor.classList.remove('activeBack')
+  modBlock.classList.remove('mB-active')
+  setTimeout(() => {
+    modalWindow.classList.remove('transYes')
+    modalWindow.classList.add('transNo')
+    modalWindow.classList.remove('flipReverse')
+  },2000)
 })
 
 btn_restartt.addEventListener('click', () => {
