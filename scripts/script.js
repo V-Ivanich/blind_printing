@@ -49,13 +49,12 @@ downBtn = shiftBtn.us_shift
 let tempStr,
   numberLine = 0
 
+const tableTd = document.querySelectorAll('.resultTD'),
+  realTd = document.querySelectorAll('.real')
 
-const resultTable = { //! Таблица результатов за сеанс
-  'level' : 1,
-  'language' : 'us',
-  'timeSimbol' : 0,
-  'errorsPerSession' : 0
-}
+
+const resultTable = [1, 0, 0, 'us'] //! Таблица результатов за сеанс
+
 const generalTable = [] //! Общая таблица
 
 function getRndInteger(min, max) {
@@ -85,14 +84,14 @@ btn_lag.forEach(item => {
       downBtn = shiftBtn.us_shift
       langFlag = false
 
-      resultTable.language = 'us' //* to the table
+      resultTable[3] = 'us' //* to the table
 
     } else {
       upBtn = shiftBtn.unShift_ru
       downBtn = shiftBtn.ru_shift
       langFlag = true
 
-      resultTable.language = 'ru' //* to the table
+      resultTable[3] = 'ru' //* to the table
 
     }
     languageSwitching(upBtn)
@@ -140,7 +139,7 @@ function printOutRandom(){
       arrLine[0].innerText = active_dictionary[temp]
       tempStr = active_dictionary[temp]
 
-      resultTable.level = 2 //* to the table
+      resultTable[0] = 2 //* to the table
 
       if( mySetLevels === '3'){ //? формиромание еще двух строк
         temp = getSrings(0, active_dictionary.length - 1)
@@ -153,7 +152,7 @@ function printOutRandom(){
 
         lineBlock = 2
 
-        resultTable.level = 3 //* to the table
+        resultTable[0] = 3 //* to the table
       }
     break
     case '0':
@@ -166,7 +165,7 @@ function printOutRandom(){
       }
     arrLine[0].innerText = tempStr
 
-    resultTable.level = 1 //* to the table
+    resultTable[0] = 1 //* to the table
     break
   }
 
@@ -194,9 +193,13 @@ function settingsTime() {
     audioTada.currentTime = 0
     audioTada.play()
 
-    resultTable.timeSimbol = temp //* to the table
-    resultTable.errorsPerSession = er_ror //* to the table
-    generalTable.push({...resultTable})
+    resultTable[1] = temp //* to the table
+    resultTable[2] = er_ror //* to the table
+    generalTable.push(resultTable)
+
+    realTd.forEach((elem, index ) => {
+      elem.textContent = resultTable[index]
+    })
 
     localStorage.setItem('resultSpeedTest', JSON.stringify(generalTable)) //!запись в "браузер"
   }

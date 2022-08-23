@@ -1,6 +1,15 @@
 .generalContainer {
   position: relative;
 }
+.modal-title, .modal-close {
+  font-size: 1.6em;
+}
+.modal-footer {
+  justify-content: left;
+}
+tr, td {
+  text-align: center;
+}
 .backColor {
   position: fixed;
   width: 100%;
@@ -29,8 +38,8 @@
   position: absolute;
   z-index: -2;
   padding: 10px;
-  left: 38%;
-  top: 30%;
+  left: 35%;
+  top: 100px;
 }
 .mB-active {
   z-index: 100;
