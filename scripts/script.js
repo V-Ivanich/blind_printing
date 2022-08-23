@@ -195,7 +195,7 @@ function settingsTime() {
 
     resultTable[1] = temp //* to the table
     resultTable[2] = er_ror //* to the table
-    generalTable.push(resultTable)
+    generalTable.push(...resultTable)
 
     realTd.forEach((elem, index ) => {
       elem.textContent = resultTable[index]
